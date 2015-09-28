@@ -36,6 +36,7 @@ function Install_And_Configure {
     sed -i '24i & ~' $RLOG_CONF
 
     systemctl restart rsyslog
+	systemctl enable rsyslog.service > /dev/null
     echo -e "\e[1;32mInstall and configure server finished.\e[0m"
 }
 

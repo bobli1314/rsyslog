@@ -5,8 +5,8 @@
 #Created Time   :   Tue 22 Sep 2015 03:27:20 PM CST
 #Email          :   kylinlingh@foxmail.com
 #Github         :   https://github.com/Kylinlin
-#Version        :
-#Description    :
+#Version        :	1.0
+#Description    :	To send logs to remote server.
 ###############################################################
 
 function Install_And_Configure {
@@ -44,6 +44,7 @@ EOF
     source /etc/bashrc
 
     systemctl restart rsyslog > /dev/null
+	systemctl enable rsyslog.service > /dev/null
 }
 
 Install_And_Configure
