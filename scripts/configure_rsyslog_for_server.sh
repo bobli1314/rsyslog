@@ -15,6 +15,15 @@ function Install_And_Configure {
     if [[ $? == 1 ]]; then
         yum install rsyslog -y > /dev/null
     fi
+    
+    while [[ `hostname` == 'localhost.domain' ]]; do
+        echo -e "\e[1;31mYou have to change your hostname.\e[0m"
+        echo -n -e "\e[1;35mHave it done? [yes/no]: \e[0m"
+        read CHOICE
+        if [[ $CHOICE == 'yes' && `hostname` != 'localhost.domain' ]]; then
+            break
+        fi
+    done
 
     RLOG_CONF=/etc/rsyslog.conf
     if [[ -f $RLOG_CONF.bak ]]; then
