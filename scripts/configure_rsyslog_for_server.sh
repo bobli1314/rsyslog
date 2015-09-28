@@ -35,6 +35,9 @@ function Install_And_Configure {
     sed -i '23i *.* ?RemoteLogs' $RLOG_CONF
     sed -i '24i & ~' $RLOG_CONF
 
+    firewall-cmd --add-port=514/tcp --permanent
+    firewall-cmd --add-port=514/udp --permanent
+    firewall-cmd --reload
     systemctl restart rsyslog
     echo -e "\e[1;32mInstall and configure server finished.\e[0m"
 }
